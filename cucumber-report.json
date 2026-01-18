@@ -1,1 +1,118 @@
-[]
+[
+  {
+    "description": "    As a great Playwright practioneer\n    I want to navigate to the Playwright Course\n    So I can validate that it has the correct price and title",
+    "elements": [
+      {
+        "description": "",
+        "id": "exercise-9---validate-playwright-course;validate-playwright-course-information",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Validate Playwright course information",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 853964399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "the user is on the Testhuset homepage",
+            "match": {
+              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:6"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3808044900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "the user has accepted the dialog button if it appears",
+            "match": {
+              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69367900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "the user presses the Kursus button",
+            "match": {
+              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1048998300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "the user clicks the course Automatisering med Playwright",
+            "match": {
+              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 647450200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the title should be Automatisering med Playwright",
+            "match": {
+              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27485500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the price should be 10.499 kr.",
+            "match": {
+              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 926209199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 61442499
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "exercise-9---validate-playwright-course",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Exercise 9 - Validate Playwright Course",
+    "tags": [],
+    "uri": "tests\\day_2\\exercise_9\\features\\exercise9.feature"
+  }
+]

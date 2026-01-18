@@ -11,6 +11,11 @@
 
 # Day 1 – Exercise 1: Getting Started with Playwright
 
+## Prerequisites
+- Node.js installed (LTS recommended)
+- Dependencies installed (`npm install`)
+- Playwright browsers installed (`npx playwright install`)
+
 ## Goals:
       - Run your first Playwright script
       - Launch a browser
@@ -22,6 +27,12 @@
       - Open TestHusets website (https://testhuset.dk)
       - Wait for the page to load
       - Take a screenshot and save it as `day1_exercise1`
+
+## Definition of Done
+      - The browser opens visibly
+      - https://testhuset.dk loads successfully
+      - A screenshot file is created on disk
+      - The script exits without errors
 
 ## 🔥Hard challenge (optional): 
    Refactor your solution so it uses Playwright Test and the built-in fixtures instead of manually creating the browser and page.

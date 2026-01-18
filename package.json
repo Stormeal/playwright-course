@@ -5,8 +5,9 @@
   "scripts": {
     "build": "tsc",
     "day1:ex1": "npm run build && node dist/day_1/exercise_1/exercise_1.js",
-    "cucumber": "cucumber-js",
-    "cucumber:exercise9": "cucumber-js tests/day2/exercise_9/features"
+    "cucumber": "cucumber-js --config cucumber.json",
+    "cucumber:exercise9": "cucumber-js tests/day2/exercise_9/features",
+    "report": "open-cli reports/cucumber-report.html"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "@cucumber/cucumber": "^12.2.0",
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.10.1",
+    "open-cli": "^8.0.0",
     "playwright": "^1.56.1",
     "typescript": "^5.9.3",
     "winston": "^3.18.3"

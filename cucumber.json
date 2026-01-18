@@ -1,11 +1,26 @@
 {
   "default": {
-    "paths": ["tests/day2/exercise_8/features/**/*.feature", "tests/day2/exercise_9/features/**/*.feature"],
-    "require": ["tests/day2/exercise_8/steps/**/*.ts", "tests/day2/exercise_9/steps/**/*.ts"],
-    "requireModule": ["ts-node/register"],
+    "paths": [
+      "tests/day_2/exercise_9/features/**/*.feature"
+    ],
+    "require": [
+      "tests/day_2/exercise_9/support/**/*.ts",
+      "tests/day_2/exercise_9/features/steps/**/*.ts"
+    ],
+    "requireModule": [
+      "ts-node/register"
+    ],
     "formatOptions": {
       "snippetInterface": "async-await"
     },
-    "format": [["html", "cucumber-report.html"], "summary", "progress-bar", "json:./cucumber-report.json"]
+    "format": [
+      [
+        "html",
+        "cucumber-report.html"
+      ],
+      "summary",
+      "progress-bar",
+      "json:./cucumber-report.json"
+    ]
   }
 }

@@ -8,27 +8,110 @@
                     | _|\ \ / -_) '_/ _| (_-</ -_)  \ V / 
                     |___/_\_\___|_| \__|_/__/\___|   \_/  
                                                         
-# Day 1 – Exercise 5: Let's Create a Note!
-## Prerequisite:
-    - Go to 'https://practice.expandtesting.com/notes/app/register' and create a test account. 
-    - Don't worry about having a valid email, since you can login without verifying your account. 
-    - You will use the login details later on, we recommend not using one of your own password and personal email.
-    
-## Goals:
-    - More advanced UI interactions
-    - Use Playwright to add a new note by using all the techniques that we have learned so far.
-    - Create multiple test scripts
+# Day 1 – Exercise 5: Let’s Create a Note!
 
+## Prerequisites
+    - Go to https://practice.expandtesting.com/notes/app/register and create a test account
+    - You do NOT need to verify your email
+    - Do not use a personal email or password – this is a test account
+    - You will reuse these credentials in later exercises
 
-## Exercise 5
-    - Copy the code from exercise_2.spec.ts into exercise_4.spec.ts
-    - Implement logging inside each test step
-    - Run the test and see the logs in the test result
+## Goals
+    - Work with more advanced UI interactions
+    - Use all Playwright techniques learned so far
+    - Write multiple Playwright tests
+    - Use a Page Object to encapsulate logic
+    - Practice cleanup of test data
 
-## Instructions:
-    1. Go into the exercise_5.spec.ts and fill in the test("Login to note app") test. 
-    2. Next up is the "Create new note" test. Instead of using the same approach in the login test, you should use the function login() with in the notes-page.ts file. 
-    3. Creating a new note step is fairly straight forward, you might notice that all the locators are already created within the page object, all you need to do, is use them.
-    4. Verify that the notes has been created is the assertion part of the test. Here we just verify that the note actually was created. You might need to filter on the title and do a
-       check afterwards that there only is one with that title created.
-    5. A good practice when working with creating test objects, is the clean up aftwards. The last and final step is to delete the note that you have just created. 
+## Instructions
+This exercise must be implemented using **Playwright Test** (`@playwright/test`).
+
+    1. Open `exercise_5.spec.ts`
+    2. Complete the test named **"Login to note app"**
+        - Navigate to the notes application
+        - Log in using your test account credentials
+        - Assert that login was successful
+    3. Complete the test named **"Create new note"**
+        - Instead of repeating the login steps, use the `login()` function from `notes-page.ts`
+    4. Create a new note
+        - All required locators already exist in the page object
+        - Use them to create a note with a unique title
+    5. Verify the note was created
+        - Filter notes by title
+        - Assert that exactly one note with that title exists
+    6. Clean up after the test
+        - Delete the note you just created
+
+## Definition of Done
+    - Login test passes
+    - Note creation test passes
+    - Assertions confirm the note exists
+    - The created note is deleted at the end of the test
+    - No test data is left behind
+
+## Hints
+### 1. Logging in (first test)
+- Use `page.goto(...)` to open the login page (or the app landing page).
+- Prefer semantic locators when possible:
+  - Email input: `page.getByRole('textbox', { name: /email/i })`
+  - Password input: `page.getByRole('textbox', { name: /password/i })`
+  - Login button: `page.getByRole('button', { name: /login/i })`
+- After clicking **Login**, assert something that confirms a successful login, for example:
+  - A heading like **Notes**
+  - A **Logout** button
+  - A URL change to the notes app
+
+---
+
+### 2. Using the Page Object `login()` function
+- In the **"Create new note"** test, do **not** repeat the login steps.
+- Import the page object from `notes-page.ts`.
+- Instantiate it with the Playwright `page` fixture.
+- Call the `login()` function instead of re-implementing login logic.
+
+---
+
+### 3. Creating a unique note title
+- Use a unique title to avoid conflicts with existing notes.
+- A simple approach is to include a timestamp:
+  - Example: `pw-note-${Date.now()}`
+- This makes assertions and cleanup more reliable.
+
+---
+
+### 4. Creating the note
+- All required locators are already defined in the page object.
+- Use the existing locators to:
+  - Fill in the note title
+  - Fill in the note content
+  - Select any required options
+  - Save the note
+- Focus on calling `fill()` and `click()` in a clear sequence.
+
+---
+
+### 5. Verifying the note was created
+- Locate the note using its title.
+- If the UI supports searching or filtering, use it.
+- To verify that only one note exists with that title:
+  - Assert the locator count:
+    - `await expect(locator).toHaveCount(1)`
+
+---
+
+### 6. Cleaning up after the test (delete the note)
+- Locate the note you just created (by title).
+- Open the note or its menu.
+- Click **Delete** and confirm if needed.
+- After deletion, assert that the note no longer exists:
+  - `toHaveCount(0)` or `not.toBeVisible()`
+
+---
+
+### 7. Stability tips
+- Avoid `waitForTimeout` whenever possible.
+- Prefer waiting for UI signals, such as:
+  - An element becoming visible
+  - A note appearing in the list
+  - A confirmation message
+- Assertions like `await expect(locator).toBeVisible()` are usually enough.

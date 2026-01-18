@@ -23,6 +23,13 @@
     - Assert that the title is 'Automatisering med Playwright', and create an additional assertion for the course price which should be 10499
     - Create a screen shot of your discoveries and store it under the name: 'exercise_2_mission_evidence' in the screenshot folder.
 
+## Definition of Done
+- The test navigates via the navbar
+- The Playwright course page opens
+- The title assertion passes
+- The price assertion passes
+- A screenshot is saved in the screenshots folder
+
 ## Hints:
 ### 1. Locator for menu item button
         You can use the page.getByRole('link', {name: 'name of button'}) to get a hold of the button. 
