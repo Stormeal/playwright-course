@@ -1,27 +1,28 @@
 import { test, expect } from "@playwright/test";
-import { logger } from "../../../tests/utils/logger";
 
-test.describe("Exercise 6", { tag: ["@api"] }, () => {
-  const baseUrl = "https://practice.expandtesting.com/notes/api/";
+test("Exercise 6.1 - Red Team Recon (Health Check)", async ({ request }) => {
+  const response = await request.get("https://practice.expandtesting.com/api/health-check");
 
-  test("GET: Health-check", async ({ request }) => {
-    // TODO: Create fixture: const reponse =
-    // TODO: Call the endpoint /health-check in the request.get
-
-    const response = await request.get(baseUrl + "health-check");
-
+  await test.step("Assert status is successful", async () => {
     expect(response.ok()).toBeTruthy();
-
-    const data = await response.json();
-    logger.info(data);
-    expect(data.message).toContain("Notes API is Running");
+    expect(response.status()).toBeGreaterThanOrEqual(200);
+    expect(response.status()).toBeLessThan(300);
   });
 
-  //   test("Authorize user", async ({ page }) => {
-  //     // TODO: Call the /users/login endpoint
-  //     // TODO: Use the account details that you created for the Notes app earlier
+  await test.step("Assert Content-Type indicates JSON", async () => {
+    const headers = response.headers();
+    expect(headers["content-type"]).toContain("application/json");
+  });
 
-  //     const request = page.request;
-  //     const response = await request.post(baseUrl + "users/login");
-  //   });
+  await test.step("Parse JSON and validate stable contract fields", async () => {
+    const body = await response.json();
+
+    expect(body).toEqual(
+      expect.objectContaining({
+        success: expect.any(Boolean),
+        status: expect.any(String),
+        message: expect.any(String),
+      }),
+    );
+  });
 });

@@ -1,7 +1,17 @@
-import { test, expect } from "@playwright/test";
-import { logger } from "../../utils/logger";
+import { test, expect, Locator } from "@playwright/test";
 
-test.beforeEach(async () => logger.info("Starting new test"));
-test.afterEach(async () => logger.info("Finished test"));
+test.afterEach("Close browser", async ({ page }) => {
+  page.close();
+});
 
-test("Exercise 4 - Im a logging jack and Im okay", async ({ page }) => {});
+test("Exercise 4 - Mission Control Crew Roster", async ({ page }) => {
+  await test.step("TC1: Navigation", async () => {});
+
+  await test.step("TC2: Adding new crew member to roster", async () => {});
+
+  await test.step("TC3: Locate and update Ava clearance level", async () => {});
+
+  await test.step("TC4: Inspect crew dossier intel", async () => {});
+
+  await test.step("TC5: Capture a screenshot of the final verified roster state", async () => {});
+});
