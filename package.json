@@ -4,10 +4,17 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "day1:ex1": "npm run build && node dist/day_1/exercise_1/exercise_1.js",
+    "test": "npx playwright test --headed && npx playwright show-report",
+    "ex1": "npx playwright test exercise_1.spec.ts --headed && npx playwright show-report",
+    "ex2": "npx playwright test exercise_2.spec.ts --headed && npx playwright show-report",
+    "ex3": "npx playwright test exercise_3.spec.ts --headed && npx playwright show-report",
+    "ex4": "npx playwright test exercise_4.spec.ts --headed && npx playwright show-report",
+    "ex5": "npx playwright test exercise_5.spec.ts --headed && npx playwright show-report",
+    "ex6": "npx playwright test exercise_6.spec.ts --headed && npx playwright show-report",
+    "ex7": "npx playwright test exercise_7.spec.ts --headed && npx playwright show-report",
+    "ex8": "npx cucumber-js --config cucumber.json",
     "cucumber": "cucumber-js --config cucumber.json",
-    "cucumber:exercise9": "cucumber-js tests/day2/exercise_9/features",
-    "report": "open-cli reports/cucumber-report.html"
+    "report": "npx open-cli ./cucumber-report.html"
   },
   "keywords": [],
   "author": "",

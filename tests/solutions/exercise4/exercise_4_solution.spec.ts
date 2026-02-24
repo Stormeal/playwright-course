@@ -1,54 +1,47 @@
-import { test, expect } from "@playwright/test";
-import { logger } from "../../tests/utils/logger";
+import { test, expect, Locator } from "@playwright/test";
 
-test.beforeEach(async () => logger.info("Starting new test"));
-test.afterEach(async () => logger.info("Finished test"));
+test.afterEach("Close browser", async ({ page }) => {
+  page.close();
+});
 
-test("Exercise 4 - Filling out the forms", async ({ page }) => {
-  // TODO: Create for each input field on the page, don't forget the two buttons!
-  // HINT: Use page.locator('your-selector-here')
+test("Exercise 4 - Mission Control Crew Roster", async ({ page }) => {
+  const baseUrl: string = "https://stormeal.github.io/lecture-page";
+  const adminSection = page.getByTestId("user-admin");
+  const addNameInput = adminSection.getByTestId("add-user-name");
+  const addEmailInput = adminSection.getByTestId("add-user-email");
+  const addUserSubmitBtn = page.getByTestId("add-user-submit");
+  const directory = page.getByTestId("user-directory");
+  const list = directory.getByTestId("user-list");
+  const rows = list.getByTestId("user-row");
+  const rowByName = (name: string) => rows.filter({ has: page.getByTestId("user-name").filter({ hasText: name }) });
+  const infoBtn = (row: Locator) => row.getByTestId("user-info");
 
-  const cookieBotDialogHeader = page.locator("#CybotCookiebotDialogHeader");
-  const courseMenuBtn = page.getByRole("link", { name: "Kursus" });
-  const playwrightCourseItem = page.locator('a:has-text("Automatisering med Playwright")');
-  const courseTitle = page.locator("h1.hero-title");
-  const pricingContainer = page.locator("div.pricing-part");
-  const price = pricingContainer.locator("span[data-variation-price]");
-
-  await test.step("Navigate to page", async () => {
-    // TODO: Navigate to https://testhuset.dk
-    // TODO: wait for the page to load
-
-    // Insert navigation code here:
-    logger.info("Navigating to Testhuset.dk");
-    await page.goto("https://testhuset.dk", { waitUntil: "domcontentloaded" });
-
-    // Handles the cookie dialog if it appears
-    if (cookieBotDialogHeader) {
-      logger.info("Handling cookie dialog…");
-      const cookieDialogAcceptBtn = page.getByRole("button", { name: "Tillad valgte" });
-      await cookieDialogAcceptBtn.click();
-    }
+  await test.step("TC1: Navigation", async () => {
+    await page.goto(`${baseUrl}/test-site/table`);
   });
 
-  await test.step("Press the KURSUS menu button", async () => {
-    // TODO: Call the locator and use the click action to press the button
-    logger.info("Clicking the KURSUS menu button…");
-    await courseMenuBtn.click();
+  await test.step("TC2: Adding new crew member to roster", async () => {
+    await addNameInput.fill("Astro Naut");
+    await addEmailInput.fill("an@rocket.com");
+    await addUserSubmitBtn.click();
   });
 
-  await test.step("Press the Playwright Course element and screenshot the page", async () => {
-    // TODO: Call the locator and use the click action to press the element
-    logger.info("Selecting the Playwright course and taking screenshot");
-    await playwrightCourseItem.click();
-    await page.screenshot({ path: "screenshots/day1_exercise2.png", fullPage: true });
+  await test.step("TC3: Locate and update Ava clearance level", async () => {
+    const row = rowByName("Ada Lovelace");
+    const role = row.getByTestId("user-role");
+
+    await role.selectOption({ label: "Manager" });
+
+    await expect(role).toHaveValue("Manager");
   });
 
-  await test.step("Assert course title and price", async () => {
-    // TODO: Create two assertions to verify that the course title and price are correct
-    logger.info("Asserting course title and price…");
-    logger.error("This is an error log example");
-    await expect(courseTitle).toHaveText("Automatisering med Playwright");
-    await expect(price).toHaveText("10.499 kr.");
+  await test.step("TC4: Inspect crew dossier intel", async () => {
+    const row = rowByName("Alex Storm");
+    await infoBtn(row).hover();
+    await expect(page.getByRole("tooltip")).toBeVisible();
+  });
+
+  await test.step("TC5: Capture a screenshot of the final verified roster state", async () => {
+    await page.screenshot({ path: "screenshots/day1_exercise4.png", fullPage: true });
   });
 });

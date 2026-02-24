@@ -1,4 +1,4 @@
-Feature: Exercise 9 - Validate Playwright Course
+Feature: Exercise 8 - Validate Playwright Course
     As a great Playwright practioneer
     I want to navigate to the Playwright Course
     So I can validate that it has the correct price and title

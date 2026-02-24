@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 853964399
+              "duration": 995810300
             }
           },
           {
@@ -23,11 +23,11 @@
             "line": 7,
             "name": "the user is on the Testhuset homepage",
             "match": {
-              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:6"
+              "location": "tests\\day_2\\exercise_8\\features\\steps\\exercise8.steps.ts:6"
             },
             "result": {
               "status": "passed",
-              "duration": 3808044900
+              "duration": 3700587600
             }
           },
           {
@@ -36,11 +36,11 @@
             "line": 8,
             "name": "the user has accepted the dialog button if it appears",
             "match": {
-              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:11"
+              "location": "tests\\day_2\\exercise_8\\features\\steps\\exercise8.steps.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 69367900
+              "duration": 80439999
             }
           },
           {
@@ -48,12 +48,9 @@
             "keyword": "When ",
             "line": 11,
             "name": "the user presses the Kursus button",
-            "match": {
-              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:16"
-            },
             "result": {
-              "status": "passed",
-              "duration": 1048998300
+              "status": "undefined",
+              "duration": 0
             }
           },
           {
@@ -61,12 +58,9 @@
             "keyword": "And ",
             "line": 12,
             "name": "the user clicks the course Automatisering med Playwright",
-            "match": {
-              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:21"
-            },
             "result": {
-              "status": "passed",
-              "duration": 647450200
+              "status": "undefined",
+              "duration": 0
             }
           },
           {
@@ -74,12 +68,9 @@
             "keyword": "Then ",
             "line": 13,
             "name": "the title should be Automatisering med Playwright",
-            "match": {
-              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:26"
-            },
             "result": {
-              "status": "passed",
-              "duration": 27485500
+              "status": "undefined",
+              "duration": 0
             }
           },
           {
@@ -87,12 +78,9 @@
             "keyword": "And ",
             "line": 14,
             "name": "the price should be 10.499 kr.",
-            "match": {
-              "location": "tests\\day_2\\exercise_9\\features\\steps\\exercise9.steps.ts:31"
-            },
             "result": {
-              "status": "passed",
-              "duration": 926209199
+              "status": "undefined",
+              "duration": 0
             }
           },
           {
@@ -100,7 +88,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 61442499
+              "duration": 56512400
             }
           }
         ],
@@ -113,6 +101,6 @@
     "keyword": "Feature",
     "name": "Exercise 9 - Validate Playwright Course",
     "tags": [],
-    "uri": "tests\\day_2\\exercise_9\\features\\exercise9.feature"
+    "uri": "tests\\day_2\\exercise_8\\features\\exercise8.feature"
   }
 ]
