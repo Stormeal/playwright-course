@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("Exercise 2 - Filling out the forms", async ({ page }) => {
+test("Exercise 2.1 - Filling out the forms", async ({ page }) => {
   const cookieBotDialogHeader = page.locator("#CybotCookiebotDialogHeader");
 
   await test.step("Navigate to page", async () => {
