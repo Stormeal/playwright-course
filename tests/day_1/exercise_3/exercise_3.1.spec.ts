@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("Exercise 3 - Filling out the forms", async ({ page }) => {
+test("Exercise 3.1 - Filling out the forms", async ({ page }) => {
   await test.step("Navigate to page", async () => {});
 
   await test.step("Fill the inputs and press the submit button", async () => {});
